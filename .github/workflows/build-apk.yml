@@ -26,10 +26,9 @@ jobs:
         run: flutter pub add http just_audio path_provider dio
 
       - name: Add Android permissions
-        run: |
-          sed -i 's|<application|<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>\n    <uses-permission android:name="android.permission.INTERNET"/>\n    <application|' app/android/app/src/main/AndroidManifest.xml
+        run: sed -i 's|<application|<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/><uses-permission android:name="android.permission.INTERNET"/><application|' app/android/app/src/main/AndroidManifest.xml
 
-       - name: Fix Kotlin version
+      - name: Fix Kotlin version
         run: |
           if [ -f app/android/settings.gradle.kts ]; then
             sed -i 's/id("org.jetbrains.kotlin.android") version "[^"]*"/id("org.jetbrains.kotlin.android") version "2.1.0"/' app/android/settings.gradle.kts
@@ -45,4 +44,3 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: app-release-apk
-          path: app/build/app/outputs/flutter-apk/app-release.apk
