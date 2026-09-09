@@ -1,0 +1,5 @@
+<!-- Add these two lines inside <manifest> in app/android/app/src/main/AndroidManifest.xml,
+     just above the <application> tag -->
+
+<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+<uses-permission android:name="android.permission.INTERNET"/>

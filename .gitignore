@@ -1,0 +1,4 @@
+app/build/
+app/.dart_tool/
+backend/audio/
+backend/__pycache__/
