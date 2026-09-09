@@ -29,6 +29,14 @@ jobs:
       - name: Add Android permissions
         run: sed -i 's|<application|<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/><uses-permission android:name="android.permission.INTERNET"/><application|' app/android/app/src/main/AndroidManifest.xml
 
+      - name: Fix minimum Android SDK version
+        run: |
+          if [ -f app/android/app/build.gradle.kts ]; then
+            sed -i 's/flutter.minSdkVersion/24/' app/android/app/build.gradle.kts
+          else
+            sed -i 's/flutter.minSdkVersion/24/' app/android/app/build.gradle
+          fi
+
       - name: Build APK
         working-directory: app
         run: flutter build apk --release
