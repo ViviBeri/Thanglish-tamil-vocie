@@ -13,7 +13,6 @@ jobs:
 
       - uses: subosito/flutter-action@v2
         with:
-          flutter-version: '3.24.0'
           channel: 'stable'
 
       - name: Create Flutter project scaffold
@@ -29,6 +28,10 @@ jobs:
       - name: Add Android permissions
         run: |
           sed -i 's|<application|<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>\n    <uses-permission android:name="android.permission.INTERNET"/>\n    <application|' app/android/app/src/main/AndroidManifest.xml
+
+      - name: Fix Kotlin version
+        run: |
+          sed -i 's/id "org.jetbrains.kotlin.android" version "[^"]*"/id "org.jetbrains.kotlin.android" version "2.1.0"/' app/android/settings.gradle
 
       - name: Build APK
         working-directory: app
