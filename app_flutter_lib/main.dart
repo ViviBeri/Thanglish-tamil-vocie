@@ -6,7 +6,7 @@ import 'package:path_provider/path_provider.dart';
 import 'package:dio/dio.dart';
 
 // TODO: replace with your real backend URL from Render (see Part C of the guide)
-const String BACKEND_URL = "https://YOUR-RENDER-URL.onrender.com";
+const String BACKEND_URL = "https://thanglish-tamil-vocie.onrender.com";
 
 void main() => runApp(const MyApp());
 
